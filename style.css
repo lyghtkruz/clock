@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'DS-Digital';
+    src: url('font/DS-DIGIB.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    background-color: #fff;
+    color: #000;
+    overflow: hidden;
+}
+
+#clock {
+    font-family: 'DS-Digital', sans-serif;
+    font-size: 4em;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#controls {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+}
+
+input[type=range] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #000000;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}

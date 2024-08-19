@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="clock"></div>
+    <div id="controls">
+        <div id="font-slider">
+            <input type="range" id="fontSizeRange" min="1" max="10" value="4" oninput="changeFontSize(this.value)">
+        </div>
+        <div id="mode-toggle">
+            <label class="switch">
+                <input type="checkbox" id="themeToggle" onclick="toggleMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
