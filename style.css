@@ -14,10 +14,12 @@ body {
 
 #clock {
     font-family: 'DS-Digital', sans-serif;
-    font-size: 4em;
-    position: absolute;
-    top: 0;
-    left: 0;
+}
+
+#clock span {
+    display: inline-block;
+    width: 0.5em;
+    text-align: center;
 }
 
 #controls {
