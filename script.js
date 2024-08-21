@@ -1,26 +1,25 @@
-function updateClock() {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
+const clock = new Date();
 
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    
-    const timeString = `${hours.toString().padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-    document.getElementById('clock').textContent = timeString;
+function setDigitWidth(num) {
+    return num.split('').map(digit => `<span>${digit}</span>`).join('');
+}
+
+function updateClock() {
+    clock.setTime(Date.now());
+    let myHours = clock.getHours() % 12;
+    myHours = myHours ? myHours : 12;
+    const hours = myHours.toString().padStart(2, '0');
+    const minutes = clock.getMinutes().toString().padStart(2, '0');
+    const seconds = clock.getSeconds().toString().padStart(2, '0');
+    const ampm = clock.getHours() > 11 ? 'PM' : 'AM';
+
+    const timeString = `${setDigitWidth(hours)}:${setDigitWidth(minutes)}:${setDigitWidth(seconds)}${setDigitWidth(ampm)}`;
+    document.getElementById('clock').innerHTML = timeString;
 }
 
 function changeFontSize(value) {
-    fontSize = 2 + (value * 0.2);
+    const fontSize = 2 + (value * 0.2);
     document.getElementById('clock').style.fontSize = `${fontSize}em`;
-}
-
-function initializeFontSize() {
-    const fontSizeRange = document.getElementById('fontSizeRange');
-    fontSizeRange.value = 10;
-    changeFontSize(fontSizeRange.value);
 }
 
 function toggleMode(event) {
@@ -28,9 +27,8 @@ function toggleMode(event) {
     bodyElement.classList.toggle('dark-mode');
 }
 
-//Loop to update every second
 setInterval(updateClock, 1000);
-
-// Initial call to display the clock immediately and set range value
-updateClock(); 
-initializeFontSize();
+updateClock();
+const fontSizeRange = document.getElementById('fontSizeRange');
+fontSizeRange.value = 10;
+changeFontSize(fontSizeRange.value);
